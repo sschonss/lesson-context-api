@@ -2,14 +2,13 @@ import React from "react";
 import { Button, StyleSheet, View } from "react-native";
 import { useAppContext } from "../contexts/AppContext";
 import ControlFooter from "./ControlFooter";
-import { ThemeContextProps } from "../contexts/ThemeContext";
+import { useThemeContext } from "../contexts/ThemeContext";
 
-interface ControlProps {
-  theme: ThemeContextProps;
-}
-
-export default function Control({ theme }: ControlProps) {
+export default function Control() {
   const app = useAppContext();
+  const {
+    theme: { color, backgroundColor },
+  } = useThemeContext();
 
   const handlePrev = () => {
     app.prev();
@@ -20,11 +19,9 @@ export default function Control({ theme }: ControlProps) {
 
   return (
     <>
-      <View
-        style={[styles.container, { backgroundColor: theme.backgroundColor }]}
-      >
-        <Button title="Prev" onPress={handlePrev} color={theme.color} />
-        <Button title="Next" onPress={handleNext} color={theme.color} />
+      <View style={[styles.container, { backgroundColor }]}>
+        <Button title="Prev" onPress={handlePrev} color={color} />
+        <Button title="Next" onPress={handleNext} color={color} />
       </View>
       <ControlFooter />
     </>
@@ -35,5 +32,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "center",
+    alignItems: "center",
   },
 });

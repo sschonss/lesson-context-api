@@ -5,20 +5,13 @@ import { useThemeContext } from "../contexts/ThemeContext";
 
 export default function Timeline() {
   const app = useAppContext();
-  const { theme } = useThemeContext();
-
-  const currentTheme = theme === "light" ? themeLight : themeDark;
+  const {
+    theme: { backgroundColor, color },
+  } = useThemeContext();
 
   return (
-    <View
-      style={[
-        styles.container,
-        { backgroundColor: currentTheme.backgroundColor },
-      ]}
-    >
-      <Text style={{ color: currentTheme.color }}>
-        Timeline - Track {app.track}
-      </Text>
+    <View style={[styles.container, { backgroundColor: backgroundColor }]}>
+      <Text style={{ color: color }}>Timeline - Track {app.track}</Text>
     </View>
   );
 }

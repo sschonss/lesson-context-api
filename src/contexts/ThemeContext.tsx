@@ -4,11 +4,16 @@ import React, {
   useContext,
   useState,
 } from "react";
+import { theme } from "../constants/colors";
 
 // Define your context props
 export interface ThemeContextProps {
-  theme: string;
+  activeTheme: string;
   toggleTheme: () => void;
+  theme: {
+    backgroundColor: string;
+    color: string;
+  };
 }
 
 // Create a new empty (undefined) context (you don't need to export it if using only the custom hook)
@@ -18,15 +23,16 @@ export const ThemeContext = createContext<ThemeContextProps | undefined>(
 
 // Create a custom context provider, so all context data will be self-contained
 const ThemeContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [theme, setTheme] = useState("light");
+  const [activeTheme, setTheme] = useState("light");
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(activeTheme === "light" ? "dark" : "light");
   };
 
   const themeContext: ThemeContextProps = {
-    theme,
+    activeTheme,
     toggleTheme,
+    theme: theme[activeTheme],
   };
 
   return (
@@ -48,13 +54,3 @@ export function useThemeContext() {
 
   return context;
 }
-
-export const themeDark = {
-  backgroundColor: "#333",
-  color: "#fff",
-};
-
-export const themeLight = {
-  backgroundColor: "#fff",
-  color: "#333",
-};

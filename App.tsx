@@ -4,31 +4,21 @@ import Home from "./src/pages/Home";
 import AppContextProvider from "./src/contexts/AppContext";
 import ThemeContextProvider, {
   useThemeContext,
-  themeDark,
-  themeLight,
 } from "./src/contexts/ThemeContext";
 
 function AppContent() {
-  const { theme, toggleTheme } = useThemeContext();
-
-  const currentTheme = theme === "light" ? themeLight : themeDark;
+  const { activeTheme, toggleTheme, theme } = useThemeContext();
 
   return (
     <View
-      style={[
-        styles.container,
-        { backgroundColor: currentTheme.backgroundColor },
-      ]}
+      style={[styles.container, { backgroundColor: theme.backgroundColor }]}
     >
       <View style={styles.header}>
-        <Text style={{ color: currentTheme.color }}>
-          Current Theme: {theme}
-        </Text>
         <TouchableOpacity style={styles.button} onPress={toggleTheme}>
-          <Text style={{ color: currentTheme.color }}> Change Theme </Text>
+          <Text style={{ color: theme.color }}> Change Theme </Text>
         </TouchableOpacity>
       </View>
-      <Home theme={currentTheme} />
+      <Home />
     </View>
   );
 }
@@ -52,11 +42,13 @@ const styles = StyleSheet.create({
   header: {
     width: "100%",
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: "flex-end",
     padding: 16,
+    marginTop: 32,
   },
   button: {
-    padding: 10,
+    padding: 8,
+    backgroundColor: "red",
+    borderRadius: 4,
   },
 });

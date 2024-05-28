@@ -1,9 +1,10 @@
-export const themeDark = {
-  backgroundColor: "#333",
-  color: "#fff",
-};
-
-export const themeLight = {
-  backgroundColor: "#fff",
-  color: "#333",
+export const theme = {
+  dark: {
+    backgroundColor: "#333",
+    color: "#fff",
+  },
+  light: {
+    backgroundColor: "#fff",
+    color: "#333",
+  },
 };
