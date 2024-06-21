@@ -1,22 +1,9 @@
-# Context API Example
+# Testes com Jest
 
-Context API example using TypeScript and custom Provider/Consumer
+## Testes unitários
 
-## The AppContextProvider
+Os testes unitários são testes que verificam o comportamento de uma unidade de código, como uma função ou um método, isoladamente. Eles são feitos para garantir que a unidade de código está funcionando corretamente, de acordo com o que foi planejado.
 
-Check [src/contexts/AppContext.tsx](src/contexts/AppContext.tsx) for the definition and [App.tsx](App.tsx) for usage.
+## Testes E2E (End to End)
 
-## The consumers
-
-There are two examples of consumers in this project:
-
-- [src/components/Control.tsx](src/components/Control.tsx) for usage with the **useContext** hook: `const app = useContext(AppContext);`
-- [src/components/Timeline.tsx](src/components/Timeline.tsx) for usage with the custom **useAppContext** hook.
-
-## Tip
-
-This is a didactic example, but ideally, you should not export AppContext in [src/contexts/AppContext.tsx](src/contexts/AppContext.tsx), but only the providr **AppContextProvider** and the consumer **useAppContext**. This way, external users will not have unnecessary imports to choose.
-
-## Extra
-
-[outdated but can be useful] PT-BR Lesson: https://youtu.be/niTUo4u1xlY
+Os testes E2E são testes que verificam o comportamento de um sistema como um todo, ou seja, eles testam a aplicação como um todo, desde a interface do usuário até o banco de dados. Eles são feitos para garantir que a aplicação está funcionando corretamente, de acordo com o que foi planejado.

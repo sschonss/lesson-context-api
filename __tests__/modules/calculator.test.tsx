@@ -1,5 +1,4 @@
 import { describe, expect, test } from "@jest/globals";
-import React from "react";
 import { calculator } from "../../src/modules/calculator";
 
 describe("Calculator", () => {
